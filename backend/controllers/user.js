@@ -1,4 +1,4 @@
-/* CONTROLLERS UTILISATEURSS */
+/* CONTROLLERS UTILISATEURS */
 
 // import du model user
 const User =  require('../models/User');
@@ -8,6 +8,7 @@ const bcrypt = require ('bcrypt');
 
 // import du package pour les tokens (à installer avant)
 const jwt = require('jsonwebtoken');
+
 
 /* CONTROLLERS */
 
