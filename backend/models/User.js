@@ -8,10 +8,11 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 // création du schéma
 const userSchema = mongoose.Schema({
-  email: { type: String, required: true, unique: true }, // unique pour qu'il n'y est pass plusieurs utilisateurs avec la même adresse mail
+  email: { type: String, required: true, unique: true }, 
   password: { type: String, required: true }
 });
 
+// pour qu'il n'y est pas plusieurs utilisateurs avec la même adresse mail
 userSchema.plugin(uniqueValidator);
 
 // export du schéma
