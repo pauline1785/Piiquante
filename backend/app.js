@@ -4,8 +4,6 @@ const express = require('express');
 // appel de la méthode express() pour créer une application express
 const app = express();
 
-
-
 // import des routes
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
@@ -42,9 +40,8 @@ app.use(express.json());
 // middleware pour dire à l'application de se servir du dossier images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-
 // on utilise une seule route qui va chercher les routeurs qui contient toutes les routes
-app.use('/api/sauce', sauceRoutes);
+app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
 
 // exportation de la const app pour y accéder depuis les autres fichiers du projet
