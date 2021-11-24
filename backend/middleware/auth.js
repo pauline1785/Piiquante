@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 // export du middleware
 module.exports = (req, res, next) => {
     try {
-        // récupération du token dans le header de la requête, ça nous retourne un tableu et on récupère le deuxième élément du tableau (le 1)
+        // récupération du token dans le header de la requête, ça nous retourne un tableau et on récupère le deuxième élément du tableau (le 1)
         const token = req.headers.authorization.split(' ')[1];
         // décoder le token
         const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
