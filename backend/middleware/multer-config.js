@@ -10,8 +10,8 @@ const MIME_TYPES = {
   'image/png': 'png'
 };
 
-// objet de configiuration pour multer
-const storage = multer.diskStorage({ // diskstorage = fonction pour dire qu'on l'enregistre sur le disque
+// diskstorage = méthode pour configurer le chemin et le nom des fichiers entrants
+const storage = multer.diskStorage({ 
     // destination = fonction qui dit à multer où sera enregistré les fichiers
     destination: (req, file, callback) => { 
         //  deux arguments : null = pas d'erreurs, images = le nom du dossier de destination
