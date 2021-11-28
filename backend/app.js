@@ -1,34 +1,38 @@
-// importer Express
+// importer d'Express
 const express = require('express');
 
-// appel de la méthode express() pour créer une application express
-const app = express();
+// import de mongoose
+const mongoose = require('mongoose');
+
+//import de path pour donner accès au chemin de notre système de fichier
+const path = require('path'); 
 
 // import des routes
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
-//import de path pour donner accès au chemin de notre système de fichier
-const path = require('path'); 
+// charge les variables d'environnement  pour se connecter à la BDD
+require('dotenv').config();
 
-// import de mongoose
-const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://pauline:melvenn@cluster0.r4f55.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_URL,
+//mongoose.connect('mongodb+srv://pauline:melvenn@cluster0.r4f55.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 { useNewUrlParser: true,
   useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
 .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+// appel de la méthode express() pour créer une application express
+const app = express();
 
-/* MIDDLEWARE */
+
 
 // middleware pour contourner les erreurs de CORS. app.use traite toutes les sortes de requêtes (GET, POST,...)
 app.use((req, res, next) => {
-    // permet d'accéder à notre API depuis n'importe quelle origine
+    // permet d'accéder à l'API depuis n'importe quelle origine
     res.setHeader('Access-Control-Allow-Origin', '*');
-    // permet d'ajouter les headers mentionnés aux requêtes envoyées vers notre API
+    // permet d'ajouter les headers mentionnés aux requêtes envoyées vers l'API
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-    // permet d'envoyer des requêtes avec les méthiodes mentionnées (GET, ...)
+    // permet d'envoyer des requêtes avec les méthodes mentionnées (GET, ...)
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     // appeler next pour passer au middleware suivant
     next(); 
