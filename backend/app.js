@@ -15,7 +15,6 @@ const userRoutes = require('./routes/user');
 require('dotenv').config();
 
 mongoose.connect(process.env.DB_URL,
-//mongoose.connect('mongodb+srv://pauline:melvenn@cluster0.r4f55.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 { useNewUrlParser: true,
   useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
